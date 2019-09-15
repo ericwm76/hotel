@@ -1,16 +1,10 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+import './images/bamboo-background.jpg'
 
-// Do I need all these global variables, or can I just immediately instantiate a 
+// Do I need all these global variables, or can I just immediately instantiate a new Hotel class that will store it all?
 let userData, roomData, bookingData, roomServiceData;
 
 // Change to a Promise All? 
@@ -63,3 +57,17 @@ fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServ
   .catch(function (err) {
     console.log('Unable to fetch the data', err);
   });
+
+  // Show the first tab by default
+$('.tabs-stage div').hide();
+$('.tabs-stage div:first').show();
+$('.tabs-nav li:first').addClass('tab-active');
+
+// Change tab class and display content
+$('.tabs-nav a').on('click', function(event){
+  event.preventDefault();
+  $('.tabs-nav li').removeClass('tab-active');
+  $(this).parent().addClass('tab-active');
+  $('.tabs-stage div').hide();
+  $($(this).attr('href')).show();
+});
