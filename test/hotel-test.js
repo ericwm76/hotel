@@ -34,7 +34,7 @@ describe('Hotel', () => {
   })
 
   it('should return the occupancy rate for a given date', () => {
-    expect(hotel.getOccupancy('2019/10/10')).to.equal(94);
+    expect(hotel.getOccupancy('2019/10/10')).to.equal(6);
   })
 
   it('should return all food orders for a given date', () => {
@@ -45,6 +45,20 @@ describe('Hotel', () => {
         totalCost: 24.77
     }]);
   })
+
+  it('should return room revenue for a given date', () => {
+    expect(hotel.getRoomRevenue('2019/10/10')).to.equal(698.20);
+  })
+
+  it('should return food order revenue for a given date', () => {
+    expect(hotel.getFoodRevenue('2019/09/16')).to.equal(24.77);
+  })
+
+  it('should return total revenue for a given date', () => {
+    expect(hotel.getTotalRevenue("2019/09/25")).to.equal(402.70);
+  })
+
+
 
 
 
