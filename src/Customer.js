@@ -4,22 +4,6 @@ class Customer {
     this.customerBookings = customerBookings;
     this.customerFoodOrders = customerFoodOrders;
   }
-
-  searchCustomer() {
-
-  }
-
-  createCustomer() {
-
-  }
-
-  getFoodOrderHistory() {
-
-  }
-
-  getRoomHistory() {
-
-  }
 }
 
 export default Customer;
