@@ -1,9 +1,16 @@
+import Customer from './Customer.js'
+
 class Hotel {
   constructor(guestData, roomData, bookingData, roomServiceData) {
     this.guests = guestData.users;
     this.rooms = roomData.rooms;
     this.bookings = bookingData.bookings;
     this.foodOrders = roomServiceData.roomServices;
+    this.currentGuest = { name: 'Please select a guest!', id: 0 };
+  }
+
+  getGuestID(name) {
+    return this.guests.find(guest => guest.name === name).id;
   }
 
   getGuestName(id) {
@@ -52,6 +59,22 @@ class Hotel {
 
   getTotalRevenue(date) {
     return this.getRoomRevenue(date) + this.getFoodRevenue(date);
+  }
+
+  findCurrentGuestInfo(guestName) {
+    let id = this.getGuestID(guestName);
+    let guest = this.guests.find(guest => guest.id === id);
+    let guestBookings = this.bookings.filter(booking => booking.userID === id);
+    let guestFoodOrders = this.foodOrders.filter(order => order.userID === id);
+
+    this.currentGuest = new Customer(guest, guestBookings, guestFoodOrders);
+    console.log(this.currentGuest)
+  }
+
+  createNewGuest(guestName) {
+    let newID = this.guests.length + 1;
+    this.guests.push({ name: guestName, id: newID });
+    return newID;
   }
 }
 

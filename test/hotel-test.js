@@ -58,10 +58,13 @@ describe('Hotel', () => {
     expect(hotel.getTotalRevenue("2019/09/25")).to.equal(402.70);
   })
 
+  it('should be able to create a new guest', () => {
+    let id = hotel.createNewGuest('Shirley Temple');
+    expect(hotel.guests[id - 1].name).to.equal('Shirley Temple');
+  })
 
-
-
-
-
-
+  it('should be able to find a current guest\'s booking and food order history', () => {
+    hotel.findCurrentGuestInfo("Marvin Lang");
+    expect(hotel.currentGuest.customer.name).to.equal("Marvin Lang");
+  })
 });
