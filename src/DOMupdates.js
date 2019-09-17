@@ -39,15 +39,24 @@ const DOMupdates = {
 
   populateDatesList(date) {
     $('#dates').append(`<option value="${date}"> ${date} </option>`)
+  },
+
+  displayGuestBookingHistory(bookings) {
+    bookings.forEach(booking => {
+      $('#booking-history').append(`<li>Date: ${booking.date}, Room Number: ${booking.roomNumber}`)
+    })  
+  },
+
+  displayGuestFoodHistory(orders) {
+    orders.forEach(order => {
+      $('#order-history').append(`<li>Date: ${order.date}, Food ordered: ${order.food}`)
+    })  
+  },
+
+  clearCustomerTab() {
+    $('#booking-history').html('');
+    $('order-history').html('')
   }
-
-
-
-
-
-
-
-
 }
 
 export default DOMupdates;

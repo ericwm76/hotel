@@ -39,6 +39,13 @@ $('.tabs-nav a').on('click', function(event){
   $($(this).attr('href')).show();
 });
 
+$('#new-guest').on('click', function() {$('#new-guest-form').show()
+});
+$('#submit-new-guest').on('click', createGuest)
+
+$('#select-guest-btn').on('click', chooseGuest);
+
+
 function populateDOM() {
   let numberAvailable = hotel.getRoomsAvailable(today);
   let occupancy = hotel.getOccupancy(today);
@@ -70,17 +77,25 @@ function populateDates() {
   .forEach(date => DOMupdates.populateDatesList(date));
 }
 
-$('#new-guest').on('click', function() {$('#new-guest-form').show()
-});
-
-$('#select-guest-btn').on('click', chooseGuest);
-
-function chooseGuest() {
-  let guest = $('#guest-list').val();
-  hotel.findCurrentGuestInfo(guest);
-  DOMupdates.displayCurrentGuest(guest);
+function createGuest(e) {
+  e.preventDefault();
+  let name = $('#new-guest-name').val();
+  hotel.createNewGuest(name);
+  hotel.findCurrentGuestInfo(name);
+  populateGuestList();
+  DOMupdates.displayCurrentGuest(name);
 }
 
+function chooseGuest(e) {
+  e.preventDefault();
+  let guest = $('#guest-list').val();
+  hotel.findCurrentGuestInfo(guest);
+  console.log(hotel.currentGuest);
+  DOMupdates.clearCustomerTab();
+  DOMupdates.displayCurrentGuest(guest);
+  DOMupdates.displayGuestBookingHistory(hotel.currentGuest.customerBookings);
+  DOMupdates.displayGuestFoodHistory(hotel.currentGuest.customerFoodOrders);
+}
 
 function searchCustomer() {
   hotel.guests.filter(guest => guest.name.includes($('#search-customer').val()));

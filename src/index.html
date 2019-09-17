@@ -32,17 +32,33 @@
             <button id="select-date">Select Date</button>
           </div>
           <div id="customers-tab">
-            <label for="guests">Search Customer: </label> 
-            <select id="guest-list">
-              <option value=""></option>
-            </select>
-            <button id="select-guest-btn">Select Guest</button>
-            <label for="new-guest">-OR-</label>
-            <button id="new-guest">Create New Guest</button> 
+            <form>
+              <label for="guests">Search Customer: </label> 
+              <select id="guest-list">
+                <option value=""></option>
+              </select>
+              <button id="select-guest-btn">Select Guest</button>
+            </form>
+            <form> 
+              <label for="new-guest">-OR-</label>
+              <button id="new-guest">Create New Guest</button>
+            </form> 
             <form id="new-guest-form" style="display: none">
               <label>Name:</label>
               <input type="text" id="new-guest-name" name="name">
-              <button>Submit</button>   
+              <button id="submit-new-guest">Submit New Guest</button>
+            </form>
+            <section>
+              <h3>Bookings</h3>
+              <button>Create New Booking</button>
+              <ul id="booking-history">Booking History</ul>
+            </section>
+            <section>
+              <h3>Food Service</h3>
+              <button>Create New Food Order</button>
+              <ul id="order-history">Food Service History</ul>
+            </section>
+
           </div>
         </div>
       </div>
