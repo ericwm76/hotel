@@ -6,7 +6,7 @@ class Hotel {
     this.rooms = roomData.rooms;
     this.bookings = bookingData.bookings;
     this.foodOrders = roomServiceData.roomServices;
-    this.currentGuest = { name: 'Please select a guest!', id: 0 };
+    this.currentGuest = { name: 'Please select a guest', id: 0 };
   }
 
   getGuestID(name) {
@@ -42,12 +42,12 @@ class Hotel {
   getRoomRevenue(date) {
     let bookedRooms = this.getBookedRooms(date);
 
-    return Math.round(this.rooms.reduce((acc, room) => {
+    return this.rooms.reduce((acc, room) => {
       if (bookedRooms.includes(room.number)) {
         acc += room.costPerNight;
       }
       return acc;
-    }, 0) * 100) / 100;
+    }, 0);
   }
 
   getFoodRevenue(date) {
@@ -58,7 +58,7 @@ class Hotel {
   }
 
   getTotalRevenue(date) {
-    return this.getRoomRevenue(date) + this.getFoodRevenue(date);
+    return Math.round((this.getRoomRevenue(date) + this.getFoodRevenue(date)) *100) / 100;
   }
 
   findCurrentGuestInfo(guestName) {
@@ -77,35 +77,33 @@ class Hotel {
     return newID;
   }
 
-  findMostPopularDates() {
-    let bookingsAllDates = this.bookings.reduce((acc, booking) => {
+  findBookingsAllDates() {
+    return this.bookings.reduce((acc, booking) => {
       if (!acc[booking.date]) {
         acc[booking.date] = 0;
       }
       acc[booking.date]++;
       return acc;
     }, {});
+  }
 
+  findDatesArray() {
+    return Object.keys(this.findBookingsAllDates()).sort((a, b) => a - b);
+  }
+
+  findMostPopularDates() {
+    let bookingsAllDates = this.findBookingsAllDates();
     let arr = Object.values(bookingsAllDates);
     let maxValue = Math.max(...arr);
-    console.log('maxValue--->', maxValue)
     let mostPopularDates = Object.keys(bookingsAllDates).filter(date => bookingsAllDates[date] === maxValue);
 
     return mostPopularDates;
   }
 
   findLeastPopularDates() {
-    let bookingsAllDates = this.bookings.reduce((acc, booking) => {
-      if (!acc[booking.date]) {
-        acc[booking.date] = 0;
-      }
-      acc[booking.date]++;
-      return acc;
-    }, {});
-
+    let bookingsAllDates = this.findBookingsAllDates();
     let arr = Object.values(bookingsAllDates);
     let minValue = Math.min(...arr);
-    console.log('minValue--->', minValue)
     let leastPopularDates = Object.keys(bookingsAllDates).filter(date => bookingsAllDates[date] === minValue);
 
     return leastPopularDates;
