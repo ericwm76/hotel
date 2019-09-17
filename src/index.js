@@ -1,61 +1,27 @@
 import $ from 'jquery';
 import './css/base.scss';
-
+import Hotel from './Hotel.js';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/bamboo-background.jpg'
 
-// Do I need all these global variables, or can I just immediately instantiate a new Hotel class that will store it all?
-let userData, roomData, bookingData, roomServiceData;
+let hotel;
 
-// Change to a Promise All? 
-fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
-  .then(response => response.json())
+let roomServiceData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices')
+  .then(data => data.json());
 
-  .then(function (data) {
-    userData = data.users;
-    console.log('user data--->', userData)
-  })
+let userData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
+  .then(data => data.json());
 
-  .catch(function (err) {
-    console.log('Unable to fetch the data', err);
-  });
+let roomData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms')
+  .then(data => data.json());
 
-fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms')
-  .then(response => response.json())
-
-  .then(function (data) {
-    roomData = data.rooms;
-    console.log('room data--->', roomData)
-
-  })
+let bookingData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings')
+  .then(data => data.json());
   
+Promise.all([roomServiceData, userData, roomData, bookingData])
+  .then(hotel = new Hotel(userData, roomData, bookingData, roomServiceData))
   .catch(function (err) {
-    console.log('Unable to fetch the data', err);
-  });
-
-fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings')
-  .then(response => response.json())
-
-  .then(function (data) {
-    bookingData = data.bookings;
-    console.log('booking data--->', bookingData)
-  })
-  
-  .catch(function (err) {
-    console.log('Unable to fetch the data', err);
-  });
-
-fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices')
-  .then(response => response.json())
-
-  .then(function (data) {
-    roomServiceData = data.roomServices;
-    console.log('roomService data--->', roomServiceData)
-
-  })
-  
-  .catch(function (err) {
-    console.log('Unable to fetch the data', err);
+    console.log('Unable to fetch the data', err)
   });
 
   // Show the first tab by default
