@@ -12,30 +12,23 @@
         <ul class="tabs-nav">
           <li><a href="#main-tab">Main</a></li>
           <li><a href="#customers-tab">Customers</a></li>
-          <li><a href="#rooms-tab">Rooms</a></li>
-          <li><a href="#food-service-tab">Food Service</a></li>
         </ul>
         <div class="tabs-stage">
           <div id="main-tab">
-            <p>Today's Date: </p>
-            <p>Rooms Available Today: </p>
-            <p>Occupancy: </p>
-            <p>Total Revenue Today: </p>
+            <p>Today's Date: <span id="todays-date"></span></p>
+            <p>Rooms Available Today: <span id="rooms-avail"></span></p>
+            <p>Occupancy: <span id="occupancy"></span></p>
+            <p>Total Revenue Today: <span id="total-revenue"></span></p>
+            <p>Most Popular Booking Dates: <ul id="most-popular"></ul></p>
+            <p>Dates With Most Rooms Available: <ul id="least-popular"></ul></p>
+            <p>Search Bookings By Date: </p>
+            <p>Search Food Orders By Date: </p>
           </div>
           <div id="customers-tab">
-            <p>Search Existing Customer: </p>
-            <p>Add New Customer: </p>
-          </div>
-          <div id="rooms-tab">
-            <p>Most Popular Booking Date: </p>
-            <p>Date With Most Rooms Avaiable: </p>
-            <p>View Customer's Booking History: </p>
-            <p>Create New Booking: </p>
-          </div>
-          <div id="food-service-tab">
-            <p>Search Orders By Date: </p>
-            <p>Search Orders By Customer: </p>
-            <p>Place New Order</p>       
+            <label for="search-customer">Search Existing Customer: </label>
+            <input type="text" name="search-customer">
+            <label for="add-customer">Add New Customer: </label>
+            <input type="text" name="add-customer">
           </div>
         </div>
       </div>
