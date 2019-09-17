@@ -1,6 +1,26 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+@import 'variables';
+@import 'tabs';
+
+* {
+  box-sizing: border-box;
+}
 
 body {
-  background-color: $primary-background;
+  font-family: 'Josefin Sans', sans-serif;
+  background-image: url('../images/bamboo-background.jpg')
+}
+
+header {
+  color: #000000;
+  text-align: center;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+h1 {
+  margin: .5em;
+}
+
+h2 {
+  display: inline-block;
+  margin: .4em;
 }
