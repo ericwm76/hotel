@@ -10,8 +10,17 @@ body {
   background-image: url('../images/bamboo-background.jpg')
 }
 
-h1 {
+header {
   color: #000000;
   text-align: center;
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+h1 {
+  margin: .5em;
+}
+
+h2 {
+  display: inline-block;
+  margin: .4em;
 }
