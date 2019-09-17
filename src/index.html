@@ -7,7 +7,13 @@
   </head>
   <body>
     <main>
-      <h1>Bamboo Hotel Management System</h1>
+      <header>
+        <h1>Bamboo Hotel Management System</h1>
+        <div id="top-display">
+          <h2>Current guest: <span id="current-guest">________</span></h2>
+          <h2>Today's date: <span id="todays-date"></span></h2>
+        </div>
+      </header>
       <div class="tabs">
         <ul class="tabs-nav">
           <li><a href="#main-tab">Main</a></li>
@@ -15,20 +21,28 @@
         </ul>
         <div class="tabs-stage">
           <div id="main-tab">
-            <p>Today's Date: <span id="todays-date"></span></p>
             <p>Rooms Available Today: <span id="rooms-avail"></span></p>
-            <p>Occupancy: <span id="occupancy"></span></p>
+            <p>Occupancy Today: <span id="occupancy"></span></p>
             <p>Total Revenue Today: <span id="total-revenue"></span></p>
             <p>Most Popular Booking Dates: <ul id="most-popular"></ul></p>
             <p>Dates With Most Rooms Available: <ul id="least-popular"></ul></p>
-            <p>Search Bookings By Date: </p>
-            <p>Search Food Orders By Date: </p>
+            <label for="dates">Search Bookings and Food Orders By Date: </label>
+            <select id="dates">
+            </select>
+            <button id="select-date">Select Date</button>
           </div>
           <div id="customers-tab">
-            <label for="search-customer">Search Existing Customer: </label>
-            <input type="text" name="search-customer">
-            <label for="add-customer">Add New Customer: </label>
-            <input type="text" name="add-customer">
+            <label for="guests">Search Customer: </label> 
+            <select id="guest-list">
+              <option value=""></option>
+            </select>
+            <button id="select-guest-btn">Select Guest</button>
+            <label for="new-guest">-OR-</label>
+            <button id="new-guest">Create New Guest</button> 
+            <form id="new-guest-form" style="display: none">
+              <label>Name:</label>
+              <input type="text" id="new-guest-name" name="name">
+              <button>Submit</button>   
           </div>
         </div>
       </div>
