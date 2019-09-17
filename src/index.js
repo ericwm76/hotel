@@ -79,11 +79,14 @@ function populateDates() {
 
 function createGuest(e) {
   e.preventDefault();
-  let name = $('#new-guest-name').val();
-  hotel.createNewGuest(name);
-  hotel.findCurrentGuestInfo(name);
+  let guest = $('#new-guest-name').val();
+  hotel.createNewGuest(guest);
+  hotel.findCurrentGuestInfo(guest);
   populateGuestList();
-  DOMupdates.displayCurrentGuest(name);
+  DOMupdates.clearCustomerTab();
+  DOMupdates.displayCurrentGuest(guest);
+  DOMupdates.displayGuestBookingHistory(hotel.currentGuest.customerBookings);
+  DOMupdates.displayGuestFoodHistory(hotel.currentGuest.customerFoodOrders);
 }
 
 function chooseGuest(e) {
@@ -93,7 +96,7 @@ function chooseGuest(e) {
   console.log(hotel.currentGuest);
   DOMupdates.clearCustomerTab();
   DOMupdates.displayCurrentGuest(guest);
-  DOMupdates.displayGuestBookingHistory(hotel.currentGuest.customerBookings);
+  DOMupdates.displayGuestBookingHistory(hotel.currentGuest.customerBookings, hotel.rooms);
   DOMupdates.displayGuestFoodHistory(hotel.currentGuest.customerFoodOrders);
 }
 
