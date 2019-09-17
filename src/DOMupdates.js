@@ -1,6 +1,10 @@
 import $ from 'jquery';
 
 const DOMupdates = {
+  displayCurrentGuest(name) {
+    $('#current-guest').text(name)
+  },
+
   displayDate(date) {
     $('#todays-date').text(date);
   },
@@ -10,7 +14,7 @@ const DOMupdates = {
   },
 
   displayOccupancy(number) {
-    $('#occupancy').text(`${number}% of rooms are occupied on this date.`)
+    $('#occupancy').text(`${number}%`)
   },
 
   displayTotalRevenue(number) {
@@ -28,6 +32,15 @@ const DOMupdates = {
       $('#least-popular').append(`<li>${date}</li>`)
     })
   },
+
+  populateGuests(name, id) {
+    $('#guest-list').append(`<option value='${name}'> ${name} </option>`);
+  },
+
+  populateDatesList(date) {
+    $('#dates').append(`<option value="${date}"> ${date} </option>`)
+  }
+
 
 
 
