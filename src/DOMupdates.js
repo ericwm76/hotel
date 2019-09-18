@@ -33,7 +33,7 @@ const DOMupdates = {
     })
   },
 
-  populateGuests(name, id) {
+  populateGuests(name) {
     $('#guest-list').append(`<option value='${name}'> ${name} </option>`);
   },
 
@@ -95,7 +95,7 @@ const DOMupdates = {
       .filter(booking => booking.date === date)
       .forEach(booking => {
         $('#select-booking-date').after(`<li>Room Number: ${booking.roomNumber}, Guest ID: ${booking.userID}</li>`)
-    });
+      });
     $('#bookings-by-date').show();
 
   },
@@ -105,13 +105,19 @@ const DOMupdates = {
       .filter(order => order.date === date)
       .forEach(order => {
         $('#orders-by-date').append(`<li> Guest ID: ${order.userID}, Order: ${order.food}, Cost: ${order.totalCost}</li>`)
-    });
+      });
     $('#orders-by-date').show();
   },
 
   displayRoomTypesList() {
     $('#room-types-list').show();
   }, 
+
+  hideRoomsModal() {
+    $('.modal').hide();
+    $('.modal-content').hide();
+    $('#rooms-available').html('');
+  }
 }
 
 export default DOMupdates;

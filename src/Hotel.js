@@ -58,7 +58,7 @@ class Hotel {
   }
 
   getTotalRevenue(date) {
-    return Math.round((this.getRoomRevenue(date) + this.getFoodRevenue(date)) *100) / 100;
+    return Math.round((this.getRoomRevenue(date) + this.getFoodRevenue(date)) * 100) / 100;
   }
 
   findCurrentGuestInfo(guestName) {

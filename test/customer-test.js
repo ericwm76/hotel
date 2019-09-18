@@ -1,7 +1,6 @@
 import chai from 'chai';
 import Customer from '../src/Customer.js';
 import Hotel from '../src/Hotel.js';
-import DOMupdates from '../src/DOMupdates.js';
 import userSample from './sample-data/users-sample.js';
 import roomsSample from './sample-data/rooms-sample.js';
 import bookingsSample from './sample-data/bookings-sample.js';

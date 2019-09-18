@@ -6,10 +6,10 @@ import './images/bamboo-background.jpg'
 
 let hotel;
 let today = `${new Date().getFullYear()}/${String(new Date()
-    .getMonth() + 1)
-    .padStart(2, '0')}/${String(new Date()
-    .getDate())
-    .padStart(2, '0')}`;
+  .getMonth() + 1)
+  .padStart(2, '0')}/${String(new Date()
+  .getDate())
+  .padStart(2, '0')}`;
 
 Promise.all([
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
@@ -25,13 +25,11 @@ Promise.all([
     .then(() => populateDates())
     .then(() => populateGuestList());
 
-  // Show the first tab by default
 $('.tabs-stage div').hide();
 $('.tabs-stage div:first').show();
 $('.tabs-nav li:first').addClass('tab-active');
 
-// Change tab class and display content
-$('.tabs-nav a').on('click', function(event){
+$('.tabs-nav a').on('click', function(event) {
   event.preventDefault();
   $('.tabs-nav li').removeClass('tab-active');
   $(this).parent().addClass('tab-active');
@@ -39,12 +37,14 @@ $('.tabs-nav a').on('click', function(event){
   $($(this).attr('href')).show();
 });
 
-$('#new-guest').on('click', function() {$('#new-guest-form').show()});
+$('#new-guest').on('click', function() {
+  $('#new-guest-form').show()
+});
 $('#submit-new-guest').on('click', createGuest);
 $('#select-guest-btn').on('click', chooseGuest);
 $('#new-booking-btn').on('click', DOMupdates.displayRoomTypesList);
 $('#select-room-type').on('click', displayRoomsModal);
-$('#close-modal').on('click', hideRoomsModal);
+$('#close-modal').on('click', DOMupdates.hideRoomsModal);
 $('#confirm-booking-btn').on('click', confirmBooking);
 $('#select-booking-date').on('click', showBookingsByDate)
 $('#select-orders-date').on('click', showOrdersByDate)
@@ -63,7 +63,7 @@ function confirmBooking() {
   if ($("input[type=radio]:checked").length > 0) {
     hotel.currentGuest.createNewBooking(today, $("input[type=radio]:checked").val());
     $('.modal-content').html('<h4>Booking confirmed!</h4>');
-    setTimeout(hideRoomsModal, 1500);
+    setTimeout(DOMupdates.hideRoomsModal, 1500);
   }
 }
 
@@ -72,12 +72,6 @@ function displayRoomsModal() {
   $('.modal').show();
   $('.modal-content').show();
   $('#room-types').text($('#room-types-avail').val());
-}
-
-function hideRoomsModal() {
-  $('.modal').hide();
-  $('.modal-content').hide();
-  $('#rooms-available').html('');
 }
 
 function populateDOM() {
@@ -107,8 +101,8 @@ function populateGuestList() {
 function populateDates() {
   let dates = hotel.findDatesArray();
   dates
-  .sort((dateA, dateB) => (dateA > dateB ? 1 : -1))
-  .forEach(date => DOMupdates.populateDatesList(date));
+    .sort((dateA, dateB) => (dateA > dateB ? 1 : -1))
+    .forEach(date => DOMupdates.populateDatesList(date));
 }
 
 function createGuest(e) {
