@@ -71,7 +71,7 @@ const DOMupdates = {
     filteredRooms.forEach(room => {
       $('#rooms-available').append(
         `<div>
-          <input type="radio" id="${room.number}" value="${room}">
+          <input type="radio" id="${room.number}" value="${room.number}">
           <label for="${room.number}">
             <span>Room Number: ${room.number}</span>
             <span>Bed Size: ${room.bedSize.toUpperCase()}</span>
@@ -88,9 +88,17 @@ const DOMupdates = {
     $('#food-orders-section').show();
   }, 
 
-  displaySubmitBookingButton() {
+  displayBookingsByDate() {
 
-  } 
+  },
+
+  displayFoodOrdersByDate() {
+
+  },
+
+  displayRoomTypesList() {
+    $('#room-types-list').show();
+  }, 
 }
 
 export default DOMupdates;

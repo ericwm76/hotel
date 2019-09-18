@@ -44,6 +44,13 @@
               <input type="text" id="new-guest-name" name="name">
               <button id="submit-new-guest">Submit New Guest</button>
             </form>
+          </div>
+          <div id="rooms-tab">
+            <p>Most Popular Booking Dates: <ul id="most-popular"></ul></p>
+            <p>Dates With Most Rooms Available: <ul id="least-popular"></ul></p> 
+            <label for="booking-dates">Search Bookings By Date: </label>
+            <select class="dates-list" id="booking-dates"></select>
+            <button id="select-booking-date">Select Date</button>
             <section id="bookings-section" style="display: none">
               <h3>Bookings</h3>
               <button id="new-booking-btn">Create New Booking</button>
@@ -66,27 +73,16 @@
                 </div>
               </div>
             </section>
+          </div>  
+          <div id="food-service-tab">  
+            <label for="food-order-dates">Search Food Orders By Date: </label>
+            <select class="dates-list" id="food-order-dates"></select>
+            <button id="select-orders-date">Select Date</button> 
             <section id="food-orders-section" style="display: none">
               <h3>Food Service</h3>
               <button>Create New Food Order</button>
               <ul id="order-history">Food Service History</ul>
             </section>
-          </div>
-          <div id="rooms-tab">
-            <p>Most Popular Booking Dates: <ul id="most-popular"></ul></p>
-            <p>Dates With Most Rooms Available: <ul id="least-popular"></ul></p> 
-            <p>View Customer's Booking History: </p>
-            <p>Create New Booking: </p> 
-            <label for="booking-dates">Search Bookings By Date: </label>
-            <select class="dates-list" id="booking-dates"></select>
-            <button id="select-date">Select Date</button>
-          </div>  
-          <div id="food-service-tab">  
-            <p>Search Orders By Customer: </p>  
-            <p>Place New Order</p> 
-            <label for="food-order-dates">Search Bookings and Food Orders By Date: </label>
-            <select class="dates-list" id="food-order-dates"></select>
-            <button id="select-date">Select Date</button> 
         </div>
       </div>
     </main>

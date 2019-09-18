@@ -44,16 +44,21 @@ $('#new-guest').on('click', function() {$('#new-guest-form').show()
 $('#submit-new-guest').on('click', createGuest)
 
 $('#select-guest-btn').on('click', chooseGuest);
-$('#new-booking-btn').on('click', displayRoomTypesList)
+$('#new-booking-btn').on('click', DOMupdates.displayRoomTypesList)
 $('#select-room-type').on('click', displayRoomsModal)
 $('#close-modal').on('click', hideRoomsModal)
+$('#confirm-booking-btn').on('click', confirmBooking)
 
-function displayRoomTypesList() {
-  $('#room-types-list').show();
+function confirmBooking() {
+  if ($("input[type=radio]:checked").length > 0) {
+    hotel.currentGuest.createNewBooking(today, $("input[type=radio]:checked").val());
+    $('.modal-content').html('<h4>Booking confirmed!</h4>');
+    setTimeout(hideRoomsModal, 1500);
+  }
 }
 
 function displayRoomsModal() {
-  DOMupdates.displayAllAvailableRooms(hotel.getAvailableRoomNumbers(today), hotel.rooms, $('#room-types-avail').val())
+  DOMupdates.displayAllAvailableRooms(hotel.getAvailableRoomNumbers(today), hotel.rooms, $('#room-types-avail').val());
   $('.modal').show();
   $('.modal-content').show();
   $('#room-types').text($('#room-types-avail').val());
@@ -118,8 +123,4 @@ function chooseGuest(e) {
   DOMupdates.displayGuestSections();
   DOMupdates.displayGuestBookingHistory(hotel.currentGuest.customerBookings, hotel.rooms);
   DOMupdates.displayGuestFoodHistory(hotel.currentGuest.customerFoodOrders);
-}
-
-function searchCustomer() {
-  hotel.guests.filter(guest => guest.name.includes($('#search-customer').val()));
 }
