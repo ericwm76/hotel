@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Bamboo Hotel Management System</title>
+    <title>Le Roseau Hotel</title>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <main>
       <header>
-        <h1>Bamboo Hotel Management System</h1>
+        <h1>Le Roseau Hotel</h1>
         <div id="top-display">
           <h2>Current guest: <span id="current-guest">________</span></h2>
           <h2>Today's date: <span id="todays-date"></span></h2>
@@ -18,18 +18,14 @@
         <ul class="tabs-nav">
           <li><a href="#main-tab">Main</a></li>
           <li><a href="#customers-tab">Customers</a></li>
+          <li><a href="#rooms-tab">Rooms</a></li> 
+          <li><a href="#food-service-tab">Food Service</a></li>
         </ul>
         <div class="tabs-stage">
           <div id="main-tab">
             <p>Rooms Available Today: <span id="rooms-avail"></span></p>
             <p>Occupancy Today: <span id="occupancy"></span></p>
             <p>Total Revenue Today: <span id="total-revenue"></span></p>
-            <p>Most Popular Booking Dates: <ul id="most-popular"></ul></p>
-            <p>Dates With Most Rooms Available: <ul id="least-popular"></ul></p>
-            <label for="dates">Search Bookings and Food Orders By Date: </label>
-            <select id="dates">
-            </select>
-            <button id="select-date">Select Date</button>
           </div>
           <div id="customers-tab">
             <form>
@@ -48,25 +44,54 @@
               <input type="text" id="new-guest-name" name="name">
               <button id="submit-new-guest">Submit New Guest</button>
             </form>
-            <section>
-              <h3>Bookings</h3>
-              <button>Create New Booking</button>
-              <ul id="booking-history">Booking History</ul>
+          </div>
+          <div id="rooms-tab">
+            <section id="booking-1">
+              <p>Most Popular Booking Dates: <ul id="most-popular"></ul></p>
+              <p>Dates With Most Rooms Available: <ul id="least-popular"></ul></p> 
+              <label for="booking-dates">Search Bookings By Date: </label>
+            </section> 
+            <section id="booking-2">
+              <select class="dates-list" id="booking-dates"></select>
+              <button id="select-booking-date">Select Date</button>
+              <div id="bookings-by-date"></div>
             </section>
-            <section>
+            <section id="bookings-section" style="display: none">
+              <h3>Current Customer Bookings</h3>
+              <button id="new-booking-btn">Create New Booking</button>
+              <div id="room-types-list" style="display: none">
+                <select id="room-types-avail">
+                  <option value="suite">Suite</option>
+                  <option value="junior suite">Junior Suite</option>
+                  <option value="residential suite">Residential Suite</option>
+                  <option value="single room">Single Room</option>
+                </select>
+                <button id="select-room-type">Select Room Type</button>
+              </div>
+              <ul id="booking-history">Booking History</ul>
+              <div class="modal">
+                <div class="modal-content">
+                  <p>Here are all available <span id="room-types"></span>s:</p>
+                  <ul id="rooms-available"></ul>
+                  <button id="confirm-booking-btn">Confirm Booking</button>
+                  <button id="close-modal">Close</button>
+                </div>
+              </div>
+            </section>
+          </div>  
+          <div id="food-service-tab"> 
+              <label for="food-order-dates">Search Food Orders By Date: </label>
+              <select class="dates-list" id="food-order-dates"></select>
+              <button id="select-orders-date">Select Date</button>
+              <div id="orders-by-date"></div> 
+            <section id="food-orders-section" style="display: none">
               <h3>Food Service</h3>
-              <button>Create New Food Order</button>
+              <button>Create New Order</button>
               <ul id="order-history">Food Service History</ul>
             </section>
-
-          </div>
         </div>
       </div>
     </main>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- Widget for Weather:
-      <script type='text/javascript' src='https://darksky.net/widget/default-small/39.741,-104.9858/us12/en.js?width=65%&height=70&title=Full Forecast&textColor=333333&bgColor=f8f6f7&transparency=false&skyColor=undefined&fontFamily=Sans-Serif&customFont=&units=us'></script> -->
-
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   <script type="text/javascript" src="main.bundle.js"></script></body>
 </html>
