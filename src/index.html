@@ -51,8 +51,8 @@
             <section>
               <h3>Bookings</h3>
               <button id="new-booking-btn">Create New Booking</button>
-              <div id="room-types" style="display: none">
-                <select>
+              <div id="room-types-list" style="display: none">
+                <select id="room-types-avail">
                   <option value="suite">Suite</option>
                   <option value="junior suite">Junior Suite</option>
                   <option value="residential suite">Residential Suite</option>
@@ -63,8 +63,8 @@
               <ul id="booking-history">Booking History</ul>
               <div class="modal">
                 <div class="modal-content">
-                  <p>Here are all available rooms of the type you selected</p>
-                  <ul id="rooms-available-slideshow"></ul>
+                  <p>Here are all available <span id="room-types"></span>s:</p>
+                  <ul id="rooms-available"></ul>
                   <p id="close-modal">X</p>
                 </div>
               </div>

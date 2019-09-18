@@ -9,7 +9,7 @@ const DOMupdates = {
     $('#todays-date').text(date);
   },
 
-  displayRoomsAvail(number) {
+  displayNumRoomsAvail(number) {
     $('#rooms-avail').text(number)
   },
 
@@ -62,8 +62,30 @@ const DOMupdates = {
 
   clearCustomerTab() {
     $('#booking-history').html('');
-    $('#order-history').html('')
+    $('#order-history').html('');
+  },
+
+  displayAllAvailableRooms(roomNums, rooms, type) {
+    let filteredRooms = rooms.filter(room => (room.roomType === type) && (roomNums.includes(room.number)))
+
+    filteredRooms.forEach(room => {
+      $('#rooms-available').append(
+        `<div>
+          <input type="radio" id="room${room.number}" value="${room}">
+          <label for="room${room.number}">
+            <span>Room Number: ${room.number}</span>
+            <span>Bed Size: ${room.bedSize.toUpperCase()}</span>
+            <span>Number of Beds: ${room.numBeds}</span>
+            <span>Cost Per Night: $${room.costPerNight}</span>
+          </label>
+        <div>`
+      )
+    })
   }
+
+  // displaySubmitBookingButton() {
+    
+  // } 
 }
 
 export default DOMupdates;

@@ -44,26 +44,29 @@ $('#new-guest').on('click', function() {$('#new-guest-form').show()
 $('#submit-new-guest').on('click', createGuest)
 
 $('#select-guest-btn').on('click', chooseGuest);
-$('#new-booking-btn').on('click', displayRoomTypes)
+$('#new-booking-btn').on('click', displayRoomTypesList)
 $('#select-room-type').on('click', displayRoomsModal)
 $('#close-modal').on('click', hideRoomsModal)
 
-function displayRoomTypes() {
-  $('#room-types').show();
+function displayRoomTypesList() {
+  $('#room-types-list').show();
 }
 
 function displayRoomsModal() {
+  DOMupdates.displayAllAvailableRooms(hotel.getAvailableRoomNumbers(today), hotel.rooms, $('#room-types-avail').val())
   $('.modal').show();
   $('.modal-content').show();
+  $('#room-types').text($('#room-types-avail').val());
 }
 
 function hideRoomsModal() {
   $('.modal').hide();
   $('.modal-content').hide();
+  $('#rooms-available').html('');
 }
 
 function populateDOM() {
-  let numberAvailable = hotel.getRoomsAvailable(today);
+  let numberAvailable = hotel.getAvailableRoomNumbers(today).length;
   let occupancy = hotel.getOccupancy(today);
   let totalRevenue = hotel.getTotalRevenue(today);
   let mostPopularDates = hotel.findMostPopularDates();
@@ -71,7 +74,7 @@ function populateDOM() {
 
   DOMupdates.displayCurrentGuest(hotel.currentGuest.name);
   DOMupdates.displayDate(today);
-  DOMupdates.displayRoomsAvail(numberAvailable);
+  DOMupdates.displayNumRoomsAvail(numberAvailable);
   DOMupdates.displayOccupancy(occupancy);
   DOMupdates.displayTotalRevenue(totalRevenue);
   DOMupdates.displayMostPopularDates(mostPopularDates);
