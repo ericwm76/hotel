@@ -2,7 +2,7 @@
 
 ## Summary
 
-Le Roseau Hotel Management App is an application I developed during my second module at the Turing School of Software and Design. It is a hotel management tool that provides a clean, simple user interface for managing and displaying data related to customers, bookings, and room service. 
+Le Roseau Hotel Management App is a hotel management tool I developed during my second module at the Turing School of Software and Design. It provides a clean, simple user interface for managing and displaying data related to customers, bookings, and room service. 
 
 ## Screenshots
 
