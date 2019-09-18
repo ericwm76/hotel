@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>Bamboo Hotel Management System</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Bamboo Hotel Management System</h1>
+        <div id="top-display">
+          <h2>Current guest: <span id="current-guest">________</span></h2>
+          <h2>Today's date: <span id="todays-date"></span></h2>
+        </div>
+      </header>
+      <div class="tabs">
+        <ul class="tabs-nav">
+          <li><a href="#main-tab">Main</a></li>
+          <li><a href="#customers-tab">Customers</a></li>
+        </ul>
+        <div class="tabs-stage">
+          <div id="main-tab">
+            <p>Rooms Available Today: <span id="rooms-avail"></span></p>
+            <p>Occupancy Today: <span id="occupancy"></span></p>
+            <p>Total Revenue Today: <span id="total-revenue"></span></p>
+            <p>Most Popular Booking Dates: <ul id="most-popular"></ul></p>
+            <p>Dates With Most Rooms Available: <ul id="least-popular"></ul></p>
+            <label for="dates">Search Bookings and Food Orders By Date: </label>
+            <select id="dates">
+            </select>
+            <button id="select-date">Select Date</button>
+          </div>
+          <div id="customers-tab">
+            <form>
+              <label for="guests">Search Customer: </label> 
+              <select id="guest-list">
+                <option value=""></option>
+              </select>
+              <button id="select-guest-btn">Select Guest</button>
+            </form>
+            <form> 
+              <label for="new-guest">-OR-</label>
+              <button id="new-guest">Create New Guest</button>
+            </form> 
+            <form id="new-guest-form" style="display: none">
+              <label>Name:</label>
+              <input type="text" id="new-guest-name" name="name">
+              <button id="submit-new-guest">Submit New Guest</button>
+            </form>
+            <section>
+              <h3>Bookings</h3>
+              <button>Create New Booking</button>
+              <ul id="booking-history">Booking History</ul>
+            </section>
+            <section>
+              <h3>Food Service</h3>
+              <button>Create New Food Order</button>
+              <ul id="order-history">Food Service History</ul>
+            </section>
+
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Widget for Weather:
+      <script type='text/javascript' src='https://darksky.net/widget/default-small/39.741,-104.9858/us12/en.js?width=65%&height=70&title=Full Forecast&textColor=333333&bgColor=f8f6f7&transparency=false&skyColor=undefined&fontFamily=Sans-Serif&customFont=&units=us'></script> -->
+
+    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+  <script type="text/javascript" src="main.bundle.js"></script></body>
+</html>
