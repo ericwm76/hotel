@@ -8,7 +8,6 @@ import roomServiceSample from './sample-data/roomService-sample.js';
 const expect = chai.expect;
 const spies = require('chai-spies');
 chai.use(spies);
-// chai.spy.on(DOMupdates, ['appendAnswer'], () => true);
 
 describe('Hotel', () => {
   let hotel;
@@ -29,8 +28,16 @@ describe('Hotel', () => {
     expect(hotel.getGuestName(5)).to.equal('Noemy Little');
   })
 
+  it('should return a guest\'s ID', () => {
+    expect(hotel.getGuestID('Noemy Little')).to.equal(5);
+  })
+
+  it('should return the room numbers of all booked rooms on a given date', () => {
+    expect(hotel.getBookedRooms('2019/10/10')).to.have.members([24, 25, 28]);
+  })
+
   it('should return all available rooms for a given date', () => {
-    expect(hotel.getRoomsAvailable('2019/10/10')).to.not.have.members([24, 25, 28]);
+    expect(hotel.getAvailableRoomNumbers('2019/10/10')).to.not.have.members([24, 25, 28]);
   })
 
   it('should return the occupancy rate for a given date', () => {
@@ -66,5 +73,17 @@ describe('Hotel', () => {
   it('should be able to find a current guest\'s booking and food order history', () => {
     hotel.findCurrentGuestInfo("Marvin Lang");
     expect(hotel.currentGuest.customer.name).to.equal("Marvin Lang");
+  })
+
+  it('should return an array of all the dates that have bookings', () => {
+    expect(hotel.findDatesArray().length).to.equal(54);
+  })
+
+  it('should find the most popular booking dates all time', () => {
+    expect(hotel.findMostPopularDates()).to.eql([ '2019/09/01', '2019/09/13', '2019/10/10' ])
+  })
+
+  it('should find the least popular booking dates all time', () => {
+    expect(hotel.findLeastPopularDates().length).to.eql(35)
   })
 });
