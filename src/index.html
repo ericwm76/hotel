@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Bamboo Hotel Management System</title>
+    <title>Le Roseau Hotel</title>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <main>
       <header>
-        <h1>Bamboo Hotel Management System</h1>
+        <h1>Le Roseau Hotel</h1>
         <div id="top-display">
           <h2>Current guest: <span id="current-guest">________</span></h2>
           <h2>Today's date: <span id="todays-date"></span></h2>
@@ -48,7 +48,7 @@
               <input type="text" id="new-guest-name" name="name">
               <button id="submit-new-guest">Submit New Guest</button>
             </form>
-            <section>
+            <section id="bookings-section" style="display: none">
               <h3>Bookings</h3>
               <button id="new-booking-btn">Create New Booking</button>
               <div id="room-types-list" style="display: none">
@@ -65,16 +65,16 @@
                 <div class="modal-content">
                   <p>Here are all available <span id="room-types"></span>s:</p>
                   <ul id="rooms-available"></ul>
-                  <p id="close-modal">X</p>
+                  <button id="confirm-booking-btn">Confirm Booking</button>
+                  <button id="close-modal">Close</button>
                 </div>
               </div>
             </section>
-            <section>
+            <section id="food-orders-section" style="display: none">
               <h3>Food Service</h3>
               <button>Create New Food Order</button>
               <ul id="order-history">Food Service History</ul>
             </section>
-
           </div>
         </div>
       </div>

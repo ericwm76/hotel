@@ -104,6 +104,7 @@ function createGuest(e) {
   populateGuestList();
   DOMupdates.clearCustomerTab();
   DOMupdates.displayCurrentGuest(guest);
+  DOMupdates.displayGuestSections();
   DOMupdates.displayGuestBookingHistory(hotel.currentGuest.customerBookings);
   DOMupdates.displayGuestFoodHistory(hotel.currentGuest.customerFoodOrders);
 }
@@ -114,6 +115,7 @@ function chooseGuest(e) {
   hotel.findCurrentGuestInfo(guest);
   DOMupdates.clearCustomerTab();
   DOMupdates.displayCurrentGuest(guest);
+  DOMupdates.displayGuestSections();
   DOMupdates.displayGuestBookingHistory(hotel.currentGuest.customerBookings, hotel.rooms);
   DOMupdates.displayGuestFoodHistory(hotel.currentGuest.customerFoodOrders);
 }

@@ -68,7 +68,6 @@ class Hotel {
     let guestFoodOrders = this.foodOrders.filter(order => order.userID === id);
 
     this.currentGuest = new Customer(guest, guestBookings, guestFoodOrders);
-    console.log(this.currentGuest);
     return this.currentGuest;
   }
 
