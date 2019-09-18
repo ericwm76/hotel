@@ -39,15 +39,25 @@ $('.tabs-nav a').on('click', function(event){
   $($(this).attr('href')).show();
 });
 
-$('#new-guest').on('click', function() {$('#new-guest-form').show()
-});
-$('#submit-new-guest').on('click', createGuest)
-
+$('#new-guest').on('click', function() {$('#new-guest-form').show()});
+$('#submit-new-guest').on('click', createGuest);
 $('#select-guest-btn').on('click', chooseGuest);
-$('#new-booking-btn').on('click', DOMupdates.displayRoomTypesList)
-$('#select-room-type').on('click', displayRoomsModal)
-$('#close-modal').on('click', hideRoomsModal)
-$('#confirm-booking-btn').on('click', confirmBooking)
+$('#new-booking-btn').on('click', DOMupdates.displayRoomTypesList);
+$('#select-room-type').on('click', displayRoomsModal);
+$('#close-modal').on('click', hideRoomsModal);
+$('#confirm-booking-btn').on('click', confirmBooking);
+$('#select-booking-date').on('click', showBookingsByDate)
+$('#select-orders-date').on('click', showOrdersByDate)
+
+function showBookingsByDate() {
+  $('#bookings-by-date').html('');
+  DOMupdates.displayBookingsByDate($('#booking-dates').val(), hotel.bookings)
+} 
+
+function showOrdersByDate() {
+  $('#orders-by-date').html('');
+  DOMupdates.displayFoodOrdersByDate($('#food-order-dates').val(), hotel.foodOrders)
+} 
 
 function confirmBooking() {
   if ($("input[type=radio]:checked").length > 0) {

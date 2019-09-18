@@ -51,6 +51,7 @@
             <label for="booking-dates">Search Bookings By Date: </label>
             <select class="dates-list" id="booking-dates"></select>
             <button id="select-booking-date">Select Date</button>
+            <div id="bookings-by-date"></div>
             <section id="bookings-section" style="display: none">
               <h3>Bookings</h3>
               <button id="new-booking-btn">Create New Booking</button>
@@ -74,10 +75,11 @@
               </div>
             </section>
           </div>  
-          <div id="food-service-tab">  
-            <label for="food-order-dates">Search Food Orders By Date: </label>
-            <select class="dates-list" id="food-order-dates"></select>
-            <button id="select-orders-date">Select Date</button> 
+          <div id="food-service-tab"> 
+              <label for="food-order-dates">Search Food Orders By Date: </label>
+              <select class="dates-list" id="food-order-dates"></select>
+              <button id="select-orders-date">Select Date</button>
+              <div id="orders-by-date"></div> 
             <section id="food-orders-section" style="display: none">
               <h3>Food Service</h3>
               <button>Create New Food Order</button>

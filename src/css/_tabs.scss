@@ -35,15 +35,18 @@ a {
   text-align: center;
   text-decoration: none;
 }
+
 a:hover {
   color: #ff7b29;
 }
+
 .tab-active a {
   background: #fff;
   border-bottom-color: transparent;
   color: #2db34a;
   cursor: default;
 }
+
 .tabs-stage {
   background-color: hsla(0, 100%, 100%, .9);
   border: 1px solid #cecfd5;

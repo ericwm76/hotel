@@ -7,7 +7,6 @@ class Customer {
 
   createNewBooking(date, number) {
     this.customerBookings.push({userID: this.customer.id, date: date, roomNumber: number});
-    console.log(this.customerBookings)
   }
 }
 

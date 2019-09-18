@@ -44,7 +44,7 @@ const DOMupdates = {
   displayGuestBookingHistory(bookings, rooms) {
     bookings.forEach(booking => {
       let price = rooms.find(room => room.number === booking.roomNumber).costPerNight;
-      $('#booking-history').append(`<li>Date: ${booking.date}, Room Number: ${booking.roomNumber}, Cost: ${price}`)
+      $('#booking-history').append(`<li>Date: ${booking.date}, Room Number: ${booking.roomNumber}, Cost: ${price}</li>`)
     })  
     if ($('#booking-history').text() === '') {
       $('#booking-history').text('This customer hasn\'t made any bookings before!')
@@ -88,12 +88,23 @@ const DOMupdates = {
     $('#food-orders-section').show();
   }, 
 
-  displayBookingsByDate() {
+  displayBookingsByDate(date, bookings) {
+    bookings
+      .filter(booking => booking.date === date)
+      .forEach(booking => {
+        $('#select-booking-date').after(`<li>Room Number: ${booking.roomNumber}, Guest ID: ${booking.userID}</li>`)
+    });
+    $('#bookings-by-date').show();
 
   },
 
-  displayFoodOrdersByDate() {
-
+  displayFoodOrdersByDate(date, orders) {
+    orders
+      .filter(order => order.date === date)
+      .forEach(order => {
+        $('#orders-by-date').append(`<li> Guest ID: ${order.userID}, Order: ${order.food}, Cost: ${order.totalCost}</li>`)
+    });
+    $('#orders-by-date').show();
   },
 
   displayRoomTypesList() {
