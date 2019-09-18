@@ -44,7 +44,23 @@ $('#new-guest').on('click', function() {$('#new-guest-form').show()
 $('#submit-new-guest').on('click', createGuest)
 
 $('#select-guest-btn').on('click', chooseGuest);
+$('#new-booking-btn').on('click', displayRoomTypes)
+$('#select-room-type').on('click', displayRoomsModal)
+$('#close-modal').on('click', hideRoomsModal)
 
+function displayRoomTypes() {
+  $('#room-types').show();
+}
+
+function displayRoomsModal() {
+  $('.modal').show();
+  $('.modal-content').show();
+}
+
+function hideRoomsModal() {
+  $('.modal').hide();
+  $('.modal-content').hide();
+}
 
 function populateDOM() {
   let numberAvailable = hotel.getRoomsAvailable(today);
@@ -93,7 +109,6 @@ function chooseGuest(e) {
   e.preventDefault();
   let guest = $('#guest-list').val();
   hotel.findCurrentGuestInfo(guest);
-  console.log(hotel.currentGuest);
   DOMupdates.clearCustomerTab();
   DOMupdates.displayCurrentGuest(guest);
   DOMupdates.displayGuestBookingHistory(hotel.currentGuest.customerBookings, hotel.rooms);

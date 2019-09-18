@@ -50,8 +50,24 @@
             </form>
             <section>
               <h3>Bookings</h3>
-              <button>Create New Booking</button>
+              <button id="new-booking-btn">Create New Booking</button>
+              <div id="room-types" style="display: none">
+                <select>
+                  <option value="suite">Suite</option>
+                  <option value="junior suite">Junior Suite</option>
+                  <option value="residential suite">Residential Suite</option>
+                  <option value="single room">Single Room</option>
+                </select>
+                <button id="select-room-type">Select Room Type</button>
+              </div>
               <ul id="booking-history">Booking History</ul>
+              <div class="modal">
+                <div class="modal-content">
+                  <p>Here are all available rooms of the type you selected</p>
+                  <ul id="rooms-available-slideshow"></ul>
+                  <p id="close-modal">X</p>
+                </div>
+              </div>
             </section>
             <section>
               <h3>Food Service</h3>
