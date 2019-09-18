@@ -6,10 +6,10 @@ import './images/bamboo-background.jpg'
 
 let hotel;
 let today = `${new Date().getFullYear()}/${String(new Date()
-    .getMonth() + 1)
-    .padStart(2, '0')}/${String(new Date()
-    .getDate())
-    .padStart(2, '0')}`;
+  .getMonth() + 1)
+  .padStart(2, '0')}/${String(new Date()
+  .getDate())
+  .padStart(2, '0')}`;
 
 Promise.all([
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
@@ -25,13 +25,11 @@ Promise.all([
     .then(() => populateDates())
     .then(() => populateGuestList());
 
-  // Show the first tab by default
 $('.tabs-stage div').hide();
 $('.tabs-stage div:first').show();
 $('.tabs-nav li:first').addClass('tab-active');
 
-// Change tab class and display content
-$('.tabs-nav a').on('click', function(event){
+$('.tabs-nav a').on('click', function(event) {
   event.preventDefault();
   $('.tabs-nav li').removeClass('tab-active');
   $(this).parent().addClass('tab-active');
@@ -39,15 +37,45 @@ $('.tabs-nav a').on('click', function(event){
   $($(this).attr('href')).show();
 });
 
-$('#new-guest').on('click', function() {$('#new-guest-form').show()
+$('#new-guest').on('click', function() {
+  $('#new-guest-form').show()
 });
-$('#submit-new-guest').on('click', createGuest)
-
+$('#submit-new-guest').on('click', createGuest);
 $('#select-guest-btn').on('click', chooseGuest);
+$('#new-booking-btn').on('click', DOMupdates.displayRoomTypesList);
+$('#select-room-type').on('click', displayRoomsModal);
+$('#close-modal').on('click', DOMupdates.hideRoomsModal);
+$('#confirm-booking-btn').on('click', confirmBooking);
+$('#select-booking-date').on('click', showBookingsByDate)
+$('#select-orders-date').on('click', showOrdersByDate)
 
+function showBookingsByDate() {
+  $('#bookings-by-date').html('');
+  DOMupdates.displayBookingsByDate($('#booking-dates').val(), hotel.bookings)
+} 
+
+function showOrdersByDate() {
+  $('#orders-by-date').text('');
+  DOMupdates.displayFoodOrdersByDate($('#food-order-dates').val(), hotel.foodOrders)
+} 
+
+function confirmBooking() {
+  if ($("input[type=radio]:checked").length > 0) {
+    hotel.currentGuest.createNewBooking(today, $("input[type=radio]:checked").val());
+    $('.modal-content').html('<h4>Booking confirmed!</h4>');
+    setTimeout(DOMupdates.hideRoomsModal, 1500);
+  }
+}
+
+function displayRoomsModal() {
+  DOMupdates.displayAllAvailableRooms(hotel.getAvailableRoomNumbers(today), hotel.rooms, $('#room-types-avail').val());
+  $('.modal').show();
+  $('.modal-content').show();
+  $('#room-types').text($('#room-types-avail').val());
+}
 
 function populateDOM() {
-  let numberAvailable = hotel.getRoomsAvailable(today);
+  let numberAvailable = hotel.getAvailableRoomNumbers(today).length;
   let occupancy = hotel.getOccupancy(today);
   let totalRevenue = hotel.getTotalRevenue(today);
   let mostPopularDates = hotel.findMostPopularDates();
@@ -55,7 +83,7 @@ function populateDOM() {
 
   DOMupdates.displayCurrentGuest(hotel.currentGuest.name);
   DOMupdates.displayDate(today);
-  DOMupdates.displayRoomsAvail(numberAvailable);
+  DOMupdates.displayNumRoomsAvail(numberAvailable);
   DOMupdates.displayOccupancy(occupancy);
   DOMupdates.displayTotalRevenue(totalRevenue);
   DOMupdates.displayMostPopularDates(mostPopularDates);
@@ -73,30 +101,30 @@ function populateGuestList() {
 function populateDates() {
   let dates = hotel.findDatesArray();
   dates
-  .sort((dateA, dateB) => (dateA > dateB ? 1 : -1))
-  .forEach(date => DOMupdates.populateDatesList(date));
+    .sort((dateA, dateB) => (dateA > dateB ? 1 : -1))
+    .forEach(date => DOMupdates.populateDatesList(date));
 }
 
 function createGuest(e) {
   e.preventDefault();
-  let name = $('#new-guest-name').val();
-  hotel.createNewGuest(name);
-  hotel.findCurrentGuestInfo(name);
+  let guest = $('#new-guest-name').val();
+  hotel.createNewGuest(guest);
+  hotel.findCurrentGuestInfo(guest);
   populateGuestList();
-  DOMupdates.displayCurrentGuest(name);
+  DOMupdates.clearCustomerTab();
+  DOMupdates.displayCurrentGuest(guest);
+  DOMupdates.displayGuestSections();
+  DOMupdates.displayGuestBookingHistory(hotel.currentGuest.customerBookings);
+  DOMupdates.displayGuestFoodHistory(hotel.currentGuest.customerFoodOrders);
 }
 
 function chooseGuest(e) {
   e.preventDefault();
   let guest = $('#guest-list').val();
   hotel.findCurrentGuestInfo(guest);
-  console.log(hotel.currentGuest);
   DOMupdates.clearCustomerTab();
   DOMupdates.displayCurrentGuest(guest);
-  DOMupdates.displayGuestBookingHistory(hotel.currentGuest.customerBookings);
+  DOMupdates.displayGuestSections();
+  DOMupdates.displayGuestBookingHistory(hotel.currentGuest.customerBookings, hotel.rooms);
   DOMupdates.displayGuestFoodHistory(hotel.currentGuest.customerFoodOrders);
-}
-
-function searchCustomer() {
-  hotel.guests.filter(guest => guest.name.includes($('#search-customer').val()));
 }

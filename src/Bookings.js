@@ -34,6 +34,8 @@ class Booking {
 
     return leastPopularDates;
   }
+
+  
 }
 
 export default Booking;

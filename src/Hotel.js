@@ -21,22 +21,22 @@ class Hotel {
     return this.bookings.filter(booking => booking.date === date).map(booking => booking.roomNumber);
   }
 
-  getRoomsAvailable(date) {
-    let availableRooms = this.rooms.filter(room => {
+  getAvailableRoomNumbers(date) {
+    let availableRoomNumbers = this.rooms.filter(room => {
       if (!this.getBookedRooms(date).includes(room.number)) {
         return room;
       }
     }).map(room => room.number);
 
-    return availableRooms.length;
+    return availableRoomNumbers;
   }
 
   getOccupancy(date) {
-    return 100 - ((this.getRoomsAvailable(date) / 50) * 100);
+    return 100 - ((this.getAvailableRoomNumbers(date).length / 50) * 100);
   }
 
   getAllFoodOrders(date) {
-    return this.foodOrders.filter(order => order.date === date)
+    return this.foodOrders.filter(order => order.date === date).sort((dateA, dateB) => (dateA > dateB ? 1 : -1))
   }
 
   getRoomRevenue(date) {
@@ -58,14 +58,14 @@ class Hotel {
   }
 
   getTotalRevenue(date) {
-    return Math.round((this.getRoomRevenue(date) + this.getFoodRevenue(date)) *100) / 100;
+    return Math.round((this.getRoomRevenue(date) + this.getFoodRevenue(date)) * 100) / 100;
   }
 
   findCurrentGuestInfo(guestName) {
     let id = this.getGuestID(guestName);
     let guest = this.guests.find(guest => guest.id === id);
-    let guestBookings = this.bookings.filter(booking => booking.userID === id);
-    let guestFoodOrders = this.foodOrders.filter(order => order.userID === id);
+    let guestBookings = this.bookings.filter(booking => booking.userID === id).sort((dateA, dateB) => (dateA > dateB ? 1 : -1));
+    let guestFoodOrders = this.foodOrders.filter(order => order.userID === id).sort((dateA, dateB) => (dateA > dateB ? 1 : -1));
 
     this.currentGuest = new Customer(guest, guestBookings, guestFoodOrders);
     return this.currentGuest;
@@ -95,7 +95,7 @@ class Hotel {
     let bookingsAllDates = this.findBookingsAllDates();
     let arr = Object.values(bookingsAllDates);
     let maxValue = Math.max(...arr);
-    let mostPopularDates = Object.keys(bookingsAllDates).filter(date => bookingsAllDates[date] === maxValue);
+    let mostPopularDates = Object.keys(bookingsAllDates).filter(date => bookingsAllDates[date] === maxValue).sort((dateA, dateB) => (dateA > dateB ? 1 : -1));
 
     return mostPopularDates;
   }
@@ -104,7 +104,7 @@ class Hotel {
     let bookingsAllDates = this.findBookingsAllDates();
     let arr = Object.values(bookingsAllDates);
     let minValue = Math.min(...arr);
-    let leastPopularDates = Object.keys(bookingsAllDates).filter(date => bookingsAllDates[date] === minValue);
+    let leastPopularDates = Object.keys(bookingsAllDates).filter(date => bookingsAllDates[date] === minValue).sort((dateA, dateB) => (dateA > dateB ? 1 : -1));
 
     return leastPopularDates;
   }

@@ -4,7 +4,6 @@ import bookingsSample from './sample-data/bookings-sample.js';
 const expect = chai.expect;
 const spies = require('chai-spies');
 chai.use(spies);
-// chai.spy.on(DOMupdates, ['appendAnswer'], () => true);
 
 describe('Bookings', () => {
   let booking = new Booking(bookingsSample);
