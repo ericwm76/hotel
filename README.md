@@ -6,6 +6,10 @@ Le Roseau Hotel Management App is a hotel management tool I developed during my 
 
 ## Screenshots
 
+<img width="1018" alt="Screen Shot 2019-09-18 at 7 47 44 AM" src="https://user-images.githubusercontent.com/27085714/65154915-dbe99000-da1b-11e9-97e1-613684bbe930.png">
+<img width="1018" alt="Screen Shot 2019-09-18 at 7 48 34 AM" src="https://user-images.githubusercontent.com/27085714/65154916-dc822680-da1b-11e9-86e6-5a8762fc9ddf.png">
+<img width="1016" alt="Screen Shot 2019-09-18 at 7 48 53 AM" src="https://user-images.githubusercontent.com/27085714/65154917-dc822680-da1b-11e9-8a63-6f6264cba72b.png">
+<img width="1018" alt="Screen Shot 2019-09-18 at 7 49 11 AM" src="https://user-images.githubusercontent.com/27085714/65154918-dc822680-da1b-11e9-885f-2909704d6dcc.png">
 
 ## View on GitHub Pages 
 
