@@ -42,6 +42,8 @@ const DOMupdates = {
   },
 
   displayGuestBookingHistory(bookings, rooms) {
+    $('#booking-1').hide();
+    $('#booking-2').hide();
     bookings.forEach(booking => {
       let price = rooms.find(room => room.number === booking.roomNumber).costPerNight;
       $('#booking-history').append(`<li>Date: ${booking.date}, Room Number: ${booking.roomNumber}, Cost: ${price}</li>`)

@@ -7,14 +7,14 @@
 }
 
 body {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: $main-font;
   background-image: url('../images/bamboo-background.jpg')
 }
 
 header {
   color: #000000;
   text-align: center;
-  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7);
+  text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.9);
 }
 
 h1 {
@@ -26,6 +26,40 @@ h2 {
   margin: .4em;
 }
 
+p {
+  padding: 5px;
+}
+
 button {
-  font-family: 'Josefin Sans', sans-serif;
+  background-color: white;
+  border-radius: 5px;
+  font-family: $main-font;
+  font-size: .7em;
+  height: 25px;
+  margin: 5px 0;
+  text-align: center;
+  width: 150px;
+}
+
+select {
+  background-color: white;
+  font-family: $main-font;
+  font-size: .7em;
+  height: 25px;
+  margin: 5px 0;
+  text-align: center;
+  width: 150px;
+}
+
+form {
+  display: inline-block;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  list-style: none;
 }

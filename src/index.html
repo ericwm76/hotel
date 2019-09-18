@@ -46,14 +46,18 @@
             </form>
           </div>
           <div id="rooms-tab">
-            <p>Most Popular Booking Dates: <ul id="most-popular"></ul></p>
-            <p>Dates With Most Rooms Available: <ul id="least-popular"></ul></p> 
-            <label for="booking-dates">Search Bookings By Date: </label>
-            <select class="dates-list" id="booking-dates"></select>
-            <button id="select-booking-date">Select Date</button>
-            <div id="bookings-by-date"></div>
+            <section id="booking-1">
+              <p>Most Popular Booking Dates: <ul id="most-popular"></ul></p>
+              <p>Dates With Most Rooms Available: <ul id="least-popular"></ul></p> 
+              <label for="booking-dates">Search Bookings By Date: </label>
+            </section> 
+            <section id="booking-2">
+              <select class="dates-list" id="booking-dates"></select>
+              <button id="select-booking-date">Select Date</button>
+              <div id="bookings-by-date"></div>
+            </section>
             <section id="bookings-section" style="display: none">
-              <h3>Bookings</h3>
+              <h3>Current Customer Bookings</h3>
               <button id="new-booking-btn">Create New Booking</button>
               <div id="room-types-list" style="display: none">
                 <select id="room-types-avail">
@@ -82,7 +86,7 @@
               <div id="orders-by-date"></div> 
             <section id="food-orders-section" style="display: none">
               <h3>Food Service</h3>
-              <button>Create New Food Order</button>
+              <button>Create New Order</button>
               <ul id="order-history">Food Service History</ul>
             </section>
         </div>

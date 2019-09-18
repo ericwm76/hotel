@@ -55,7 +55,7 @@ function showBookingsByDate() {
 } 
 
 function showOrdersByDate() {
-  $('#orders-by-date').html('');
+  $('#orders-by-date').text('');
   DOMupdates.displayFoodOrdersByDate($('#food-order-dates').val(), hotel.foodOrders)
 } 
 
