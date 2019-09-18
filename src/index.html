@@ -18,18 +18,14 @@
         <ul class="tabs-nav">
           <li><a href="#main-tab">Main</a></li>
           <li><a href="#customers-tab">Customers</a></li>
+          <li><a href="#rooms-tab">Rooms</a></li> 
+          <li><a href="#food-service-tab">Food Service</a></li>
         </ul>
         <div class="tabs-stage">
           <div id="main-tab">
             <p>Rooms Available Today: <span id="rooms-avail"></span></p>
             <p>Occupancy Today: <span id="occupancy"></span></p>
             <p>Total Revenue Today: <span id="total-revenue"></span></p>
-            <p>Most Popular Booking Dates: <ul id="most-popular"></ul></p>
-            <p>Dates With Most Rooms Available: <ul id="least-popular"></ul></p>
-            <label for="dates">Search Bookings and Food Orders By Date: </label>
-            <select id="dates">
-            </select>
-            <button id="select-date">Select Date</button>
           </div>
           <div id="customers-tab">
             <form>
@@ -76,13 +72,25 @@
               <ul id="order-history">Food Service History</ul>
             </section>
           </div>
+          <div id="rooms-tab">
+            <p>Most Popular Booking Dates: <ul id="most-popular"></ul></p>
+            <p>Dates With Most Rooms Available: <ul id="least-popular"></ul></p> 
+            <p>View Customer's Booking History: </p>
+            <p>Create New Booking: </p> 
+            <label for="booking-dates">Search Bookings By Date: </label>
+            <select class="dates-list" id="booking-dates"></select>
+            <button id="select-date">Select Date</button>
+          </div>  
+          <div id="food-service-tab">  
+            <p>Search Orders By Customer: </p>  
+            <p>Place New Order</p> 
+            <label for="food-order-dates">Search Bookings and Food Orders By Date: </label>
+            <select class="dates-list" id="food-order-dates"></select>
+            <button id="select-date">Select Date</button> 
         </div>
       </div>
     </main>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- Widget for Weather:
-      <script type='text/javascript' src='https://darksky.net/widget/default-small/39.741,-104.9858/us12/en.js?width=65%&height=70&title=Full Forecast&textColor=333333&bgColor=f8f6f7&transparency=false&skyColor=undefined&fontFamily=Sans-Serif&customFont=&units=us'></script> -->
-
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>

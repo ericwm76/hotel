@@ -38,7 +38,7 @@ const DOMupdates = {
   },
 
   populateDatesList(date) {
-    $('#dates').append(`<option value="${date}"> ${date} </option>`)
+    $('.dates-list').append(`<option value="${date}"> ${date} </option>`)
   },
 
   displayGuestBookingHistory(bookings, rooms) {
